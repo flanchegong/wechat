@@ -16,6 +16,7 @@ use \EasySwoole\Core\Swoole\EventRegister;
 use \EasySwoole\Core\Http\Request;
 use \EasySwoole\Core\Http\Response;
 use think\Db;
+use Illuminate\Database\Capsule\Manager as Capsule;
 
 /**
  * 全局事件定义文件
@@ -29,16 +30,19 @@ Class EasySwooleEvent implements EventInterface
      * 框架初始化事件
      * 在Swoole没有启动之前 会先执行这里的代码
      */
+    // 初始化完成
     static public function frameInitialize(): void
-    {
-        // 设置全局异常处理类
-        Di::getInstance()->set( SysConst::HTTP_EXCEPTION_HANDLER, \App\Exception\ExceptionHandel::class );
-        // 获得数据库配置
-        $dbConf = Config::getInstance()->getConf('database');
-        Db::setConfig($dbConf);
-
-        date_default_timezone_set('Asia/Shanghai');
-    }
+{
+    // 初始化数据库
+    $dbConf = Config::getInstance()->getConf('database');
+    $capsule = new Capsule;
+    // 创建链接
+    $capsule->addConnection($dbConf);
+    // 设置全局静态可访问
+    $capsule->setAsGlobal();
+    // 启动Eloquent
+    $capsule->bootEloquent();
+}
 
     /**
      * 创建主服务

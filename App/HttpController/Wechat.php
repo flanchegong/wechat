@@ -22,14 +22,15 @@ use EasyWeChat\Factory;
 use EasyWeChat\Kernel\Exceptions\DecryptException;
 use App\Utility\Tools;
 use App\Model\Profile;
-
+use Illuminate\Database\Capsule\Manager as Capsule;
 
 class Wechat extends Base
 {
 
     function index()
     {
-        $this->response()->write('hello world');
+        $version = Capsule::select('select version();');
+        $this->response()->write($version);
     }
 
 
