@@ -23,6 +23,7 @@ return [
     'DEBUG'=>true,
     'TEMP_DIR'=>EASYSWOOLE_ROOT.'/Temp',
     'LOG_DIR'=>EASYSWOOLE_ROOT.'/Log',
+    'FILE_DIR'=>EASYSWOOLE_ROOT.'/File',
     'EASY_CACHE'=>[
         'PROCESS_NUM'=>3,//若不希望开启，则设置为0
         'PERSISTENT_TIME'=>5//如果需要定时数据落地，请设置对应的时间周期，单位为秒
@@ -39,10 +40,13 @@ return [
         'serverId'=>null
     ],
     'MYSQL'=>[
-        'HOST'=>'127.0.0.1',
-        'USER'=>'root',
-        'PASSWORD'=>'',
-        'DB_NAME'=>'LTalk'
+        'host'     => '127.0.0.1',
+        'username' => 'root',
+        'password' => '123456',
+        'db'       => 'LTalk',
+        'port'     => 3306,
+        'charset'  => 'utf8',
+        'trace'   => true,
     ],
 
     'REDIS' => [
@@ -69,7 +73,7 @@ return [
         // 用户名
         'username'        => 'root',
         // 密码
-        'password'        => '',
+        'password'        => 'root',
         // 端口
         'hostport'        => '3306',
         // 数据库表前缀
@@ -88,5 +92,9 @@ return [
             'friend_req' => 'friend:fromNumber:%s:data',                    //  from_num => to_num，发送好友请求时创建，对方拒绝或同意时销毁
             'group_number_fd' => 'group:number:%s:data',                    //  gnumber => fds，创建新群组时创建
         ],
-    ]
+    ],
+    'ENCRYPT' => [
+        'key' => 'aaa',
+        'iv' => '注意iv必须是16位的字符串不要多了少了',
+    ],
 ];
