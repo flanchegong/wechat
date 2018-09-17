@@ -73,7 +73,7 @@ class Wechat extends Base
             }
             print_r($res);
             if( $uid = (new Profile())->getOrInsert($res['openId'], $res)){
-                $this->success(['session_id' => Tools::sessionTokenBuild($uid)]);
+                $this->success(['session_id' => Tools::sessionEncrypt($uid)]);
             }
 
         }catch(DecryptException $e){

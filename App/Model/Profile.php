@@ -10,7 +10,7 @@
 namespace App\Model;
 use EasySwoole\Core\Component\Di;
 Use EasySwoole\Core\Component\logger;
-
+use Illuminate\Database\Capsule\Manager as Capsule;
 //需要在这里引入Db类，它负责创建数据库的连接和执行一些通用的数据库操作
 use App\Utility\Db;
 
@@ -31,7 +31,8 @@ class Profile extends Db
         //格式化需要插入的数据
         $row = $this->buildInsertData($data);
         //获取数据库连接，并执行插入，如果插入成功则返回自增id，没有自增id返回true。
-        $insertId = $this->link()->insert($this->table, $row);
+        $insertId = Capsule::table('profile')->insert($row);
+
         logger::getInstance()->console('getOrInsert : ' . $insertId);
         return $insertId;
     }
@@ -39,7 +40,8 @@ class Profile extends Db
     //检查openid 是否已经创建，如果创建直接返回ui都给用户
     private function getUserByOpenID($openid){
         logger::getInstance()->console('getUserByOpenID : ' . $openid);
-        $res = $this->link()->where ('openId', $openid)->get($this->table, null, 'uid');
+        //$res = $this->link()->where ('openId', $openid)->get($this->table, null, 'uid');
+        $res=Capsule::table('profile')->where('openId','=', $openid)->get();
         return !empty($res) ?: $res['uid'];
     }
 
