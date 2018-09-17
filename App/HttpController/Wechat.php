@@ -21,6 +21,7 @@ use EasySwoole\Core\Http\Response;
 use EasyWeChat\Factory;
 use EasyWeChat\Kernel\Exceptions\DecryptException;
 use App\Utility\Tools;
+use App\Model\Profile;
 
 
 class Wechat extends Base
