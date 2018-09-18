@@ -18,7 +18,7 @@ use EasySwoole\Core\Http\Response;
 use EasyWeChat\Factory;
 use EasyWeChat\Kernel\Exceptions\DecryptException;
 use App\Utility\Tools;
-
+use WeMini\Crypt;
 
 class User extends Base
 {
@@ -26,7 +26,6 @@ class User extends Base
      * 小程序授权，获取用户手机号码
      */
     public function getPhone(){
-        include_once "wxBizDataCrypt.php";
         $appid =$_GET['appid'];
         $secret =$_GET['secret'];
         $js_code=$_GET['code'];
@@ -37,11 +36,11 @@ class User extends Base
         $objSession=http_curl("https://api.weixin.qq.com/sns/jscode2session?appid=$appid&secret=$secret&js_code=$js_code&grant_type=$grant_type");
         $session_key = json_decode($objSession)->session_key;
 
-        $decodeData = new WXBizDataCrypt($appid, $session_key);
-        $errCode = $decodeData->decryptData($encryptedData, $iv, $data );
+        //$decodeData = new WXBizDataCrypt($appid, $session_key);
+        $errCode =(new Crypt())->decryptData($iv,$session_key, $encryptedData );
 
         if ($errCode == 0) {
-            print($data . "\n");
+            print($errCode . "\n");
         } else {
             print($errCode . "\n");
         }
