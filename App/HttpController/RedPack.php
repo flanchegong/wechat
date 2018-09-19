@@ -135,7 +135,7 @@ class RedPack extends Base
         var_dump(Config::getInstance()->getConf('FILE_DIR'));
         # 配置参数
         //include_once "App\Utility\Loader.php";
-        $openid = $this->request()->getRequestParam('openid');
+        $openid ='of5Ye0ac5U3qomirNfJIMm7AhR-Y';// $this->request()->getRequestParam('openid');
         $amount = 100;//$this->request()->getRequestParam('amount');
         $bill_no = md5('flanche'.sha1('ideamake'.microtime()));
         $desc   = '测试红包';
