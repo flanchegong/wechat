@@ -58,7 +58,7 @@ class RedPack extends Base
      * 领取现金红包
      */
     public function  index(){
-        $payment = Factory::payment($this->redConfig);
+        $payment = Factory::payment($this->redConfig());
         $redpack = $payment->redpack;
 
 
@@ -81,7 +81,7 @@ class RedPack extends Base
     }
 
     public function enterprisePayment(){
-        $app = Factory::weWork($this->redConfig);
+        $app = Factory::weWork($this->redConfig());
         $app->transfer->toBalance([
             'partner_trade_no' => md5('flanche'.sha1('ideamake'.microtime())), // 商户订单号，需保持唯一性(只能是字母或者数字，不能包含有符号)
             'openid' => 'oxTWIuGaIt6gTKsQRLau2M0yL16E',
@@ -94,7 +94,7 @@ class RedPack extends Base
 
     public function test(){
         try {
-            $wechat = new Pay($this->redConfig);
+            $wechat = new Pay($this->redConfig());
             $options = [
                 'partner_trade_no' => time(),
                 'openid'           => 'o38gps3vNdCqaggFfrBRCRikwlWY',
@@ -121,7 +121,7 @@ class RedPack extends Base
      * 订单查询
      */
     public function redPackFind(){
-        $payment = Factory::payment($this->redConfig);
+        $payment = Factory::payment($this->redConfig());
         $redpack = $payment->redpack;
         $mchBillNo = "商户系统内部的订单号（mch_billno）";
         $redpack->info($mchBillNo);
@@ -131,7 +131,7 @@ class RedPack extends Base
      * 下载对账单
      */
     public function account(){
-        $payment = Factory::payment($this->redConfig);
+        $payment = Factory::payment($this->redConfig());
         $app = $payment->redpack;
         $bill = $app->bill->get('20140603'); // type: ALL
 // or
@@ -143,7 +143,7 @@ class RedPack extends Base
 
 
     public function notify(){
-        $payment = Factory::payment($this->redConfig);
+        $payment = Factory::payment($this->redConfig());
         $app = $payment->redpack;
 
         $response = $app->handlePaidNotify(function($message, $fail){
@@ -179,7 +179,7 @@ class RedPack extends Base
     }
 
     function push(){
-        $payment = Factory::payment($this->redConfig);
+        $payment = Factory::payment($this->redConfig());
         $app = $payment->redpack;
         $app->server->push(function ($message) {
             switch ($message['MsgType']) {
