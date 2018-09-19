@@ -9,7 +9,7 @@ namespace App\HttpController;
 use EasySwoole\Core\Http\Request;
 use EasySwoole\Core\Http\Response;
 use EasyWeChat\Factory;
-use WeChat\Pay;
+use App\Utility\WechatPay;
 /**
  * 微信支付
  * Class RedPack
@@ -115,6 +115,25 @@ class RedPack extends Base
             echo $e->getMessage() . PHP_EOL;
 
         }
+    }
+
+    /**
+     * 企业付款
+     * @param string $openid 红包接收者OPENID
+     * @param int $amount 红包总金额
+     * @param string $billno 商户订单号
+     * @param string $desc 备注信息
+     * @return bool|array
+     * @link https://pay.weixin.qq.com/wiki/doc/api/tools/mch_pay.php?chapter=14_2
+     */
+    public function transfers()
+    {
+        $openid = $this->request()->getRequestParam('openid');
+        $amount = 100;//$this->request()->getRequestParam('amount');
+        $bill_no = md5('flanche'.sha1('ideamake'.microtime()));
+        $desc   = '测试红包';
+        $transfers= new WechatPay();
+        $transfers->transfers($openid,$amount,$bill_no,$desc);
     }
 
         /**
