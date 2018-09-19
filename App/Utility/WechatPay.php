@@ -60,6 +60,27 @@ class WechatPay
     }
 
     /**
+     * 生成支付签名
+     * @param array $data 参与签名的数据
+     * @param string $signType 参与签名的类型
+     * @param string $buff 参与签名字符串前缀
+     * @return string
+     */
+    public function getPaySign(array $data, $signType = 'MD5', $buff = '')
+    {
+        unset($data['sign']);
+        ksort($data);
+        foreach ($data as $k => $v) {
+            $buff .= "{$k}={$v}&";
+        }
+        $buff .= ("key=" . $this->config['partnerkey']);
+        if (strtoupper($signType) === 'MD5') {
+            return strtoupper(md5($buff));
+        }
+        return strtoupper(hash_hmac('SHA256', $buff, $this->config['partnerkey']));
+    }
+
+    /**
      * 获取当前错误内容
      * @return string
      */
@@ -538,6 +559,7 @@ class WechatPay
         $data['check_name'] = 'NO_CHECK'; #不验证姓名
         $data['spbill_create_ip'] = Tools::getAddress(); //调用接口的机器Ip地址
         $data['desc'] = $desc; //备注信息
+        $data['sign'] =$this->getPaySign($data);
         $result = $this->postXmlSSL($data, self::MCH_BASE_URL . '/mmpaymkttransfers/promotion/transfers');
         var_dump($result);
         $json = Tools::xml2arr($result);
