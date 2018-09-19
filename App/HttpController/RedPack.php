@@ -133,7 +133,7 @@ class RedPack extends Base
     public function transfers()
     {
         # 配置参数
-        include_once "App\Utility\Loader.php";
+        //include_once "App\Utility\Loader.php";
         $openid = $this->request()->getRequestParam('openid');
         $amount = 100;//$this->request()->getRequestParam('amount');
         $bill_no = md5('flanche'.sha1('ideamake'.microtime()));
