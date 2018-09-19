@@ -10,6 +10,8 @@ use EasySwoole\Core\Http\Request;
 use EasySwoole\Core\Http\Response;
 use EasyWeChat\Factory;
 use App\Utility\WechatPay;
+
+
 /**
  * 微信支付
  * Class RedPack
@@ -128,6 +130,7 @@ class RedPack extends Base
      */
     public function transfers()
     {
+        include_once "App\Utility\Loader.php";
         $openid = $this->request()->getRequestParam('openid');
         $amount = 100;//$this->request()->getRequestParam('amount');
         $bill_no = md5('flanche'.sha1('ideamake'.microtime()));
