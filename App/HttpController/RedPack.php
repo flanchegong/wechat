@@ -132,6 +132,7 @@ class RedPack extends Base
      */
     public function transfers()
     {
+        var_dump(Config::getInstance()->getConf('FILE_DIR'));
         # 配置参数
         //include_once "App\Utility\Loader.php";
         $openid = $this->request()->getRequestParam('openid');
