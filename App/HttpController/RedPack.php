@@ -92,6 +92,31 @@ class RedPack extends Base
         ]);
     }
 
+    public function test(){
+        try {
+            $wechat = new Pay($this->redConfig);
+            $options = [
+                'partner_trade_no' => time(),
+                'openid'           => 'o38gps3vNdCqaggFfrBRCRikwlWY',
+                'check_name'       => 'NO_CHECK',
+                'amount'           => '100',
+                'desc'             => '企业付款操作说明信息',
+                'spbill_create_ip' => '127.0.0.1',
+            ];
+            $result = $wechat->createTransfers($options);
+            echo '<pre>';
+            var_export($result);
+            $result = $wechat->queryTransfers($options['partner_trade_no']);
+            var_export($result);
+
+        } catch (Exception $e) {
+
+            // 出错啦，处理下吧
+            echo $e->getMessage() . PHP_EOL;
+
+        }
+    }
+
         /**
      * 订单查询
      */
