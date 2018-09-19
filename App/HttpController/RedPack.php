@@ -11,6 +11,7 @@ use EasySwoole\Core\Http\Request;
 use EasySwoole\Core\Http\Response;
 use EasyWeChat\Factory;
 use App\Utility\WechatPay;
+use EasySwoole\Config;
 
 
 /**
