@@ -538,9 +538,10 @@ class WechatPay
         $data['check_name'] = 'NO_CHECK'; #不验证姓名
         $data['spbill_create_ip'] = Tools::getAddress(); //调用接口的机器Ip地址
         $data['desc'] = $desc; //备注信息
-        var_dump($data);
         $result = $this->postXmlSSL($data, self::MCH_BASE_URL . '/mmpaymkttransfers/promotion/transfers');
+        var_dump($result);
         $json = Tools::xml2arr($result);
+        var_dump($json);
         if (!empty($json) && false === $this->_parseResult($json)) {
             return false;
         }
