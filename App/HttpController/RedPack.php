@@ -32,11 +32,11 @@ class RedPack extends Base
      */
     private function redConfig(){
         $config = [
-            'app_id'    => 'wxfb94ff9d2363bb33',
+            'appid'    => 'wxfb94ff9d2363bb33',
             'mch_id'    => '1502277341',
-            'key'       => '9dc8774024e21dbbc8b3ea8d9942c81b',
-            'cert_path' => Config::getInstance()->getConf('FILE_DIR').'/20180913cert/apiclient_cert.pem',
-            'key_path'  => Config::getInstance()->getConf('FILE_DIR').'/20180913cert/apiclient_key.pem',
+            'partnerkey'       => '9dc8774024e21dbbc8b3ea8d9942c81b',
+            'ssl_cer' => Config::getInstance()->getConf('FILE_DIR').'/20180913cert/apiclient_cert.pem',
+            'ssl_key'  => Config::getInstance()->getConf('FILE_DIR').'/20180913cert/apiclient_key.pem',
             'notify_url'         => '默认的订单回调地址',     // 你也可以在下单时单独设置来想覆盖它
             // ...
         ];
