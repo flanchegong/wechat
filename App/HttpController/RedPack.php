@@ -9,7 +9,7 @@ namespace App\HttpController;
 use EasySwoole\Core\Http\Request;
 use EasySwoole\Core\Http\Response;
 use EasyWeChat\Factory;
-
+use WeChat\Pay;
 /**
  * 微信支付
  * Class RedPack
