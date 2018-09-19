@@ -15,8 +15,6 @@
 
 namespace App\Utility;
 
-use Cache;
-
 /**
  * 注册SDK自动加载机制
  * @author Anyon <zoujingli@qq.com>
