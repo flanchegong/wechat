@@ -136,7 +136,8 @@ class RedPack extends Base
         $bill_no = md5('flanche'.sha1('ideamake'.microtime()));
         $desc   = '测试红包';
         $transfers= new WechatPay();
-        $transfers->transfers($openid,$amount,$bill_no,$desc);
+       $abc= $transfers->transfers($openid,$amount,$bill_no,$desc);
+       var_dump($abc);
     }
 
         /**
