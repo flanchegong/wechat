@@ -140,7 +140,7 @@ class RedPack extends Base
             'encodingaeskey' => '',
         );
         # 加载对应操作接口
-        $wechat = &\Wechat\Loader::get('User', $config);
+        $wechat = &\App\Utility\Loader::get('User', $config);
         $userlist = $wechat->getUserList();
 
         var_dump($userlist);
