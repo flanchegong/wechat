@@ -14,9 +14,6 @@
 
 namespace App\Utility;
 
-use Prpcrypt;
-use Loader;
-
 /**
  * 微信SDK基础类
  *
