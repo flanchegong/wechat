@@ -133,13 +133,11 @@ class RedPack extends Base
     {
         # 配置参数
         include_once "App\Utility\Loader.php";
-        $Loader= new Loader();
-        $Loader::config($this->redConfig());
         $openid = $this->request()->getRequestParam('openid');
         $amount = 100;//$this->request()->getRequestParam('amount');
         $bill_no = md5('flanche'.sha1('ideamake'.microtime()));
         $desc   = '测试红包';
-        $transfers= new WechatPay();
+        $transfers= new WechatPay($this->redConfig());
        $abc= $transfers->transfers($openid,$amount,$bill_no,$desc);
        var_dump($abc);
     }
