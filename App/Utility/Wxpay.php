@@ -117,7 +117,7 @@ class Wxpay{
             'check_name'=> 'NO_CHECK', 			//OPTION_CHECK不强制校验真实姓名, FORCE_CHECK：强制 NO_CHECK：
             'amount'    => $money * 100, 		//付款金额单位为分
             'desc'      => $desc,
-            'spbill_create_ip' => self::getip()
+            'spbill_create_ip' => '127.0.0.1',//self::getip()
 		);
 		
 		//生成签名
