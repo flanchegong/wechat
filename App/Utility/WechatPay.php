@@ -554,7 +554,7 @@ class WechatPay
         $data = array();
         $data['mch_appid'] = $this->appid;
         $data['mchid'] = $this->mch_id;
-        $data['nonce_str'] = Tools::createNoncestr(32,'ideamake_');
+        $data['nonce_str'] = Tools::createNoncestr(23,'ideamake_');
         $data['partner_trade_no'] = $billno;
         $data['openid'] = $openid;
         $data['check_name'] = 'NO_CHECK'; #不验证姓名
