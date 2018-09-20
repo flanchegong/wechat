@@ -12,7 +12,7 @@ use EasySwoole\Core\Http\Response;
 use EasyWeChat\Factory;
 use App\Utility\WechatPay;
 use EasySwoole\Config;
-
+use App\Utility\Wxpay;
 
 /**
  * 微信支付
@@ -135,12 +135,27 @@ class RedPack extends Base
         //header("Content-Type: text/html;charset=utf-8");
         # 配置参数
         //include_once "App\Utility\Loader.php";
+//        $openid ='of5Ye0ac5U3qomirNfJIMm7AhR-Y';// $this->request()->getRequestParam('openid');
+//        $amount = 1;//$this->request()->getRequestParam('amount');
+//        $bill_no = md5('flanche'.sha1('ideamake'.microtime()));
+//        $desc   = '老板收钱';
+//        $transfers= new WechatPay($this->redConfig());
+//        return $transfers->transfers($openid,$amount,$bill_no,$desc);
+        $config = array(
+            'wxappid'		=> 'wx2dfe229cdd42a7c0',
+            'mch_id'	 	=> '1502277341',
+            'pay_apikey' 	=> 'fe63b183c84c520ae97c776613fdbf14',
+            'api_cert'		=> Config::getInstance()->getConf('FILE_DIR').'/20180913cert/apiclient_cert.pem',
+            'api_key'		=>  Config::getInstance()->getConf('FILE_DIR').'/20180913cert/apiclient_key.pem'
+        );
         $openid ='of5Ye0ac5U3qomirNfJIMm7AhR-Y';// $this->request()->getRequestParam('openid');
-        $amount = 1;//$this->request()->getRequestParam('amount');
-        $bill_no = md5('flanche'.sha1('ideamake'.microtime()));
-        $desc   = '老板收钱';
-        $transfers= new WechatPay($this->redConfig());
-        return $transfers->transfers($openid,$amount,$bill_no,$desc);
+        $money = 1;//$this->request()->getRequestParam('amount');
+        $trade_no=md5('flanche'.sha1('ideamake'.microtime()));
+        $act_name   = '老板收钱';
+        $redpack = new Wxpay($config);								//初始化类(同时传递参数)
+        //$redpack->sendredpack($openid,$money,$trade_no,$act_name);		//发红包
+        $abc=$redpack->mchpay($openid,$money,$trade_no,$act_name);			//企业付款
+        var_dump($abc);
     }
 
         /**
