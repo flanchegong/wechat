@@ -132,16 +132,15 @@ class RedPack extends Base
      */
     public function transfers()
     {
-        var_dump(Config::getInstance()->getConf('FILE_DIR'));
+        header("Content-Type: text/html;charset=utf-8");
         # 配置参数
         //include_once "App\Utility\Loader.php";
         $openid ='of5Ye0ac5U3qomirNfJIMm7AhR-Y';// $this->request()->getRequestParam('openid');
-        $amount = 100;//$this->request()->getRequestParam('amount');
+        $amount = 1;//$this->request()->getRequestParam('amount');
         $bill_no = md5('flanche'.sha1('ideamake'.microtime()));
-        $desc   = '测试红包';
+        $desc   = '老板收钱';
         $transfers= new WechatPay($this->redConfig());
-       $abc= $transfers->transfers($openid,$amount,$bill_no,$desc);
-       var_dump($abc);
+        $transfers->transfers($openid,$amount,$bill_no,$desc);
     }
 
         /**
