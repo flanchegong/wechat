@@ -34,7 +34,7 @@ class RedPack extends Base
         $config = [
             'appid'    => 'wx2dfe229cdd42a7c0',
             'mch_id'    => '1502277341',
-            'partnerkey'       => 'c83e2ffe11f65ef4603b75f398bd6b36',
+            'partnerkey'       => '9dc8774024e21dbbc8b3ea8d9942c81b',
             'ssl_cer' => Config::getInstance()->getConf('FILE_DIR').'/20180913cert/apiclient_cert.pem',
             'ssl_key'  => Config::getInstance()->getConf('FILE_DIR').'/20180913cert/apiclient_key.pem',
             'notify_url'         => '默认的订单回调地址',     // 你也可以在下单时单独设置来想覆盖它
