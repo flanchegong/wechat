@@ -9,13 +9,13 @@ class Wxpay{
      * @var array
      */
     private $config = array(
-        'wxappid'		=> 'xxxxxxxxxxxxxx',
-		'mch_id'	 	=> 'xxxxxxxx',
-		'pay_apikey' 	=> 'xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx',
-		'api_cert'		=> './apiclient_key.pem',	
-		'api_key'		=> './apiclient_key.pem'
+        'wxappid'		=> 'wx2dfe229cdd42a7c0',
+		'mch_id'	 	=> '1502277341',
+		'pay_apikey' 	=> 'fe63b183c84c520ae97c776613fdbf14',
+        'api_cert' => "Config::getInstance()->getConf('FILE_DIR').'/20180913cert/apiclient_cert.pem'",
+        'api_key'  => "Config::getInstance()->getConf('FILE_DIR').'/20180913cert/apiclient_key.pem"
+
     );
-	
 	public function __construct($config = array()){
 		$this->config   =   array_merge($this->config,$config);
 	}
