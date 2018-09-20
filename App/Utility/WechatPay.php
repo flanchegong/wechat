@@ -571,7 +571,7 @@ class WechatPay
         //var_dump($data);
         $result = $this->postXmlSSL($data, self::MCH_BASE_URL . '/mmpaymkttransfers/promotion/transfers');
         $json = Tools::xml2arr($result);
-        return $json;
+        var_dump($json) ;
         if (!empty($json) && false === $this->_parseResult($json)) {
             return false;
         }
