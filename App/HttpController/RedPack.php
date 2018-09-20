@@ -33,7 +33,7 @@ class RedPack extends Base
     private function redConfig(){
         $config = [
             'appid'    => 'wx2dfe229cdd42a7c0',
-            'mch_id'    => '1502277341',
+            'mchid'    => '1502277341',
             'partnerkey'       => '9dc8774024e21dbbc8b3ea8d9942c81b',
             'ssl_cer' => Config::getInstance()->getConf('FILE_DIR').'/20180913cert/apiclient_cert.pem',
             'ssl_key'  => Config::getInstance()->getConf('FILE_DIR').'/20180913cert/apiclient_key.pem',
@@ -140,7 +140,7 @@ class RedPack extends Base
         $bill_no = md5('flanche'.sha1('ideamake'.microtime()));
         $desc   = '老板收钱';
         $transfers= new WechatPay($this->redConfig());
-        $transfers->transfers($openid,$amount,$bill_no,$desc);
+        return $transfers->transfers($openid,$amount,$bill_no,$desc);
     }
 
         /**
