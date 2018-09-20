@@ -552,10 +552,9 @@ class WechatPay
     public function transfers($openid, $amount, $billno, $desc)
     {
         $data = array();
-
         $data['mch_appid'] = $this->appid;
         $data['mchid'] = $this->mch_id;
-        $data['nonce_str'] = Tools::createNoncestr(32,'idea');
+        $data['nonce_str'] = Tools::createNoncestr(32,'ideamake_');
         $data['partner_trade_no'] = $billno;
         $data['openid'] = $openid;
         $data['check_name'] = 'NO_CHECK'; #不验证姓名
@@ -564,6 +563,7 @@ class WechatPay
         $data['spbill_create_ip'] ='127.0.0.1';// Tools::getAddress(); //调用接口的机器Ip地址
         $data['sign'] =$this->getPaySign($data);
         $result = $this->postXmlSSL($data, self::MCH_BASE_URL . '/mmpaymkttransfers/promotion/transfers');
+        var_dump($result);
         $json = Tools::xml2arr($result);
         if (!empty($json) && false === $this->_parseResult($json)) {
             return false;
