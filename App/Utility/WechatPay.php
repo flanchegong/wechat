@@ -75,6 +75,7 @@ class WechatPay
         }
        // $buff .= ("key=" . $this->config['partnerkey']);
         var_dump($buff);
+        substr($buff, 0, -1);
         if (strtoupper($signType) === 'MD5') {
             return strtoupper(md5($buff));
         }
