@@ -66,7 +66,7 @@ class WechatPay
      * @param string $buff 参与签名字符串前缀
      * @return string
      */
-    public function getPaySign(array $data, $signType = 'MD5', $buff = '')
+    public function getPaySign(array $data, $signType = 'SHA256', $buff = '')
     {
         unset($data['sign']);
         ksort($data);
