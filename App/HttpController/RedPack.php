@@ -132,7 +132,7 @@ class RedPack extends Base
      */
     public function transfers()
     {
-        header("Content-Type: text/html;charset=utf-8");
+        //header("Content-Type: text/html;charset=utf-8");
         # 配置参数
         //include_once "App\Utility\Loader.php";
         $openid ='of5Ye0ac5U3qomirNfJIMm7AhR-Y';// $this->request()->getRequestParam('openid');
