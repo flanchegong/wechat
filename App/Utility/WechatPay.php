@@ -153,6 +153,7 @@ class WechatPay
      */
     function postXmlSSL($data, $url)
     {
+        var_dump($this->createXml($data));
         return Tools::httpsPost($url, $this->createXml($data), $this->ssl_cer, $this->ssl_key);
     }
 
