@@ -138,7 +138,7 @@ class Tools{
      * 产生随机字符串
      * @param int $length 指定字符长度
      * @param string $str 字符串前缀
-     * @return string
+     * @return string(参数改进，总长度减去$STR)
      */
     static public function createNoncestr($length = 32, $str = "")
     {
