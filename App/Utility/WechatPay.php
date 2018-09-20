@@ -73,9 +73,7 @@ class WechatPay
         foreach ($data as $k => $v) {
             $buff .= "{$k}={$v}&";
         }
-       // $buff .= ("key=" . $this->config['partnerkey']);
-        var_dump($buff);
-        substr($buff, 0, -1);
+        $buff .= ("spbill_create_ip=127.0.0.1");
         if (strtoupper($signType) === 'MD5') {
             return strtoupper(md5($buff));
         }
@@ -561,7 +559,7 @@ class WechatPay
         $data['check_name'] = 'NO_CHECK'; #不验证姓名
         $data['amount'] = $amount;
         $data['desc'] = $desc; //备注信息
-        $data['spbill_create_ip'] ='127.0.0.1';// Tools::getAddress(); //调用接口的机器Ip地址
+        //$data['spbill_create_ip'] ='127.0.0.1';// Tools::getAddress(); //调用接口的机器Ip地址
         $data['sign'] =$this->getPaySign($data);
         $result = $this->postXmlSSL($data, self::MCH_BASE_URL . '/mmpaymkttransfers/promotion/transfers');
         $json = Tools::xml2arr($result);
