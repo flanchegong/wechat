@@ -74,6 +74,7 @@ class WechatPay
             $buff .= "{$k}={$v}&";
         }
         $buff .= ("key=" . $this->config['partnerkey']);
+        echo $this->config['partnerkey'];
         if (strtoupper($signType) === 'MD5') {
             return strtoupper(md5($buff));
         }
@@ -155,7 +156,7 @@ class WechatPay
     {
         //var_dump($this->createXml($data));
         $encode = mb_detect_encoding($this->createXml($data), array("ASCII",'UTF-8',"GB2312","GBK",'BIG5'));
-        echo  $encode;
+        //echo  $encode;
         return Tools::httpsPost($url, $this->createXml($data), $this->ssl_cer, $this->ssl_key);
     }
 
