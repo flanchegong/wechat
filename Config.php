@@ -56,6 +56,7 @@ return [
         'host' => '127.0.0.1', // redis主机地址
         'port' => 6379, // 端口
         'serialize' => false, // 是否序列化php变量
+        'dbName' => 1, // db名
         'auth' => null, // 密码
         'pool' => [
             'min' => 5, // 最小连接数
@@ -63,7 +64,7 @@ return [
         ],
         'errorHandler' => function(){
             return null;
-        }
+        } // 如果Redis重连失败，会判断errorHandler是否callable，如果是，则会调用，否则会抛出异常，请自行try
     ],
 
     'database' => [
@@ -100,4 +101,11 @@ return [
         'key' => 'aaa',
         'iv' => '注意iv必须是16位的字符串不要多了少了',
     ],
+    'POOL_MANAGER' => [
+        'App\Utility\RedisPool' => [
+            'min' => 5,
+            'max' => 100,
+            'type' => 1
+        ]
+    ]
 ];
