@@ -7,32 +7,17 @@
  */
 
 namespace App\HttpController;
-use EasySwoole\Config;
-use EasySwoole\Core\Component\Di;
-use EasySwoole\Core\Component\Logger;
-use EasySwoole\Core\Http\Request;
-use EasySwoole\Core\Http\Response;
-use EasyWeChat\Factory;
-use EasyWeChat\Kernel\Exceptions\DecryptException;
-use App\Utility\Tools;
-use App\Model\Profile;
-use Illuminate\Database\Capsule\Manager as Capsule;
-use WeMini\Crypt;
-use App\Model\Visitors;
-use App\Model\Redpack;
-use App\ViewController;
+use EasySwoole\Core\Http\AbstractInterface\Controller;
 use EasySwoole\Core\Http\Message\Status;
 use EasySwoole\Core\Swoole\ServerManager;
-class Index extends ViewController
+class Index extends Controller
 {
-    public function index()
+    //测试路径 /index.html
+    function index()
     {
         // TODO: Implement index() method.
         $this->response()->write('hello world');
-        // Blade View
-        $this->render('index');     # 对应模板: Views/index.blade.php
     }
-
     //测试路径 /test/index.html
     function test()
     {
@@ -66,6 +51,4 @@ class Index extends ViewController
     function test2(){
         $this->response()->write('this is controller test2 and your id is '.$this->request()->getRequestParam('id'));
     }
-
-
 }
