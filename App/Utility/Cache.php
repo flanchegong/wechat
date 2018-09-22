@@ -99,7 +99,7 @@ class Cache
      */
     static protected function check()
     {
-        empty(self::$cachepath) && self::$cachepath = dirname(__DIR__) . DIRECTORY_SEPARATOR . 'Cache' . DIRECTORY_SEPARATOR;
+        empty(self::$cachepath) && self::$cachepath = dirname(__DIR__) . DIRECTORY_SEPARATOR . DIRECTORY_SEPARATOR;
         self::$cachepath = rtrim(self::$cachepath, '/\\') . DIRECTORY_SEPARATOR;
         if (!is_dir(self::$cachepath) && !mkdir(self::$cachepath, 0755, true)) {
             return false;

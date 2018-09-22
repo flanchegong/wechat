@@ -30,16 +30,21 @@ class MysqlPool2 extends CoroutinePool
     protected function createObject()
     {
         // TODO: Implement createObject() method.
-        $conf = Config::getInstance()->getConf('MYSQL');
-        $db = new Mysql([
-            'host' => $conf['HOST'],
-            'username' => $conf['USER'],
-            'password' => $conf['PASSWORD'],
-            'db' => $conf['DB_NAME']
-        ]);
-        if (isset($conf['names'])) {
-            $db->rawQuery('SET NAMES ' . $conf['names']);
+        try{
+            $conf = Config::getInstance()->getConf('MYSQL');
+            $db = new Mysql([
+                'host' => $conf['HOST'],
+                'username' => $conf['USER'],
+                'password' => $conf['PASSWORD'],
+                'db' => $conf['DB_NAME']
+            ]);
+            if (isset($conf['names'])) {
+                $db->rawQuery('SET NAMES ' . $conf['names']);
+            }
+            return $db;
+        }catch (\Throwable $throwable){
+            Trigger::throwable($throwable);
+            return null;
         }
-        return $db;
     }
 }

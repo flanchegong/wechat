@@ -3,8 +3,9 @@
     "require": {
         "easyswoole/easyswoole": "v2.0.2",
         "joshcam/mysqli-database-class": "dev-master",
-        "easyswoole/swoole-ide-helper": "1.*",
-        "topthink/think-orm": "1.2.2"
+        "easyswoole/swoole-ide-helper": "^1.02",
+        "topthink/think-orm": "1.2.2",
+        "duncan3dc/blade": "^4.2"
     },
     "autoload": {
         "psr-4": {

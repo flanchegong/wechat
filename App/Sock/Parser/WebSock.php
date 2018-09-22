@@ -7,7 +7,7 @@
  */
 
 namespace App\Sock\Parser;
-
+use App\Sock\Controller\Web;
 use EasySwoole\Config;
 use EasySwoole\Core\Socket\AbstractInterface\ParserInterface;
 use EasySwoole\Core\Socket\Common\CommandBean;
@@ -22,6 +22,9 @@ class WebSock implements ParserInterface
         $command->setControllerClass($controller_path.$json['controller']);
         $command->setAction($json['action']);
         $command->setArg('content',$json['content']);
+//        $command->setControllerClass(Web::class);
+//        $command->setAction($json['action']);
+//        $command->setArg('content',$json['content']);
         return $command;
     }
 

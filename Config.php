@@ -17,7 +17,10 @@ return [
             'task_worker_num' => 2, //异步任务进程
             'task_max_request'=>10,
             'max_request'=>2500,//强烈建议设置此配置项
-            'worker_num'=>2
+            'worker_num'=>2,
+            // 加入以下两条配置以返回静态文件
+            'document_root'         => EASYSWOOLE_ROOT.'/Public',  // 静态资源目录
+            'enable_static_handler' => true,
         ],
     ],
     'DEBUG'=>true,
