@@ -3,8 +3,12 @@
     "require": {
         "easyswoole/easyswoole": "v2.0.2",
         "joshcam/mysqli-database-class": "dev-master",
-        "easyswoole/swoole-ide-helper": "^1.02",
+        "easyswoole/swoole-ide-helper": "1.*",
         "topthink/think-orm": "1.2.2",
+        "zoujingli/wechat-developer": "^1.1",
+        "overtrue/wechat": "^4.0",
+        "nesbot/carbon": "^1.32",
+        "illuminate/database": "^5.6",
         "duncan3dc/blade": "^4.2"
     },
     "autoload": {
