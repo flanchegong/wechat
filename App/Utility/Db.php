@@ -14,7 +14,7 @@ class Db
     function __construct()
     {
         $conf = Config::getInstance()->getConf('MYSQL');
-        $this->db = new \MysqliDb($conf['HOST'],$conf['USER'],$conf['PASSWORD'],$conf['DB_NAME']);
+        $this->db = new \MysqliDb($conf['host'],$conf['username'],$conf['password'],$conf['db']);
     }
     function dbConnector()
     {
